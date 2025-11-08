@@ -6,3 +6,4 @@ authors = ["Kate <katysv12@icloud.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+colorama = "^0.4.6"
