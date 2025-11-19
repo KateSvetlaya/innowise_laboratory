@@ -9,7 +9,8 @@ def generate_profile(age):
     else:
         return "Unknown"
 
-# Step 2: Getting data from the user
+# Step 2: greeting and getting data from the user
+print("Welcome to mini profile generator! ")
 user_name = input("Enter your full name: ")
 birth_year_str = input("Enter your birth year: ")
 
@@ -29,10 +30,10 @@ while True:
     hobby_input = input("Enter a favorite hobby or type 'stop': ").strip()
     if hobby_input.lower() == 'stop':
         break
-    if hobby_input:  # Checking that the input is not empty
+    if hobby_input:  # checking that the input is not empty
         hobbies.append(hobby_input)
 
-# Step 3: Create user_profile
+# Step 3: create user_profile
 life_stage = generate_profile(current_age)
 
 user_profile = {
@@ -42,7 +43,7 @@ user_profile = {
     'hobbies': hobbies
 }
 
-# Step 4: Output
+# Step 4: output
 print("\n--- Profile Summary: ---")
 print(f"Name: {user_profile['name']}")
 print(f"Age: {user_profile['age']}")
