@@ -32,9 +32,9 @@ def display_menu() -> None:
     print("\n===== Student Grade Analyzer =====")
     print("1. Add a new student")
     print("2. Add grades for a student")
-    print("3. Show report (all students)")
-    print("4. Find top performer")
-    print("5. Exit")
+    print("3. Generate a full report")
+    print("4. Find the top student")
+    print("5. Exit program")
     print("==================================")
 
 
@@ -92,10 +92,14 @@ def show_report(students: List[Dict[str, Union[str, List[float]]]]) -> None:
     print("\n--- Student Report ---")
     for s in students:
         try:
-            avg = sum(s['grades']) / len(s['grades'])
+            grades = s.get('grades')
+            # type checking grades
+            if isinstance(grades, list):
+                if grades:
+                    avg = sum(grades) / len(grades)
             print(f"{s['name']}'s average grade is {avg:.1f}")
             grades_exist = True
-            total_sum += sum(s['grades'])
+            total_sum += float(sum(grades))
             total_count += len(s['grades'])
             if (max_avg is None) or (avg > max_avg):
                 max_avg = avg
@@ -143,7 +147,7 @@ def main() -> None:
     students: List[Dict[str, Union[str, List[float]]]] = []
     while True:
         display_menu()
-        choice = input("Enter your choice (1-5): ").strip()
+        choice = input("Enter your choice: ").strip()
         try:
             choice_int = int(choice)
         except ValueError:
