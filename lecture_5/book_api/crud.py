@@ -1,7 +1,8 @@
 from typing import Optional
 
 from sqlalchemy.orm import Session
-from . import models, schemas
+from . import models
+from . import schemas
 
 
 def create_book(db: Session, book: schemas.BookCreate):

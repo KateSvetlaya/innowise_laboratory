@@ -1,9 +1,8 @@
 from fastapi import FastAPI
 from . import models
-from .database import engine
-from .api import books
+from . database import engine
+from . import books
 
-# Создает все таблицы
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
